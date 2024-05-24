@@ -1,0 +1,20 @@
+.game-title {
+  font-size: 100px; /* Adjust as needed */
+  text-align: center;
+  margin-bottom: 50px; /* Adjust as needed */
+  font-family: "Courier New", Courier, monospace;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.start-button button[mat-stroked-button] {
+  background-color: lawngreen;
+  font-size: 70px; /* Adjust as needed */
+  padding: 50px 100px; /* Adjust as needed */
+}

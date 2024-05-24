@@ -7,13 +7,15 @@ import { GameComponentComponent } from './game-component/game-component.componen
 import { QuizComponentComponent } from './quiz-component/quiz-component.component';
 import { QuestionComponentComponent } from './question-component/question-component.component';
 import {MatButton} from "@angular/material/button";
+import { HomeComponentComponent } from './home-component/home-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponentComponent,
     QuizComponentComponent,
-    QuestionComponentComponent
+    QuestionComponentComponent,
+    HomeComponentComponent
   ],
   imports: [
     BrowserModule,
