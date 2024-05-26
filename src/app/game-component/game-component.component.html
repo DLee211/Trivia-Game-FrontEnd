@@ -1,1 +1,35 @@
-<p>game-component works!</p>
+<div class ="container">
+<div margin="margin-top: 10px;">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="Date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.date | date}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="Hours">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Hours </th>
+        <td mat-cell *matCellDef="let row"> {{row.hours}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Minutes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Minutes </th>
+        <td mat-cell *matCellDef="let row"> {{row.minutes}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="Notes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Notes </th>
+        <td mat-cell *matCellDef="let row"> {{row.notes}} </td>
+      </ng-container>
+  </div>
+</div>
