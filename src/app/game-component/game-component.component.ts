@@ -18,7 +18,7 @@ export class GameComponentComponent {
   constructor(private api : ApiService)
   {
   }
-  GetAllSleepData()
+  GetAllGames()
   {
     this.api.getGame().subscribe({
       next: (res)=>{
@@ -32,5 +32,16 @@ export class GameComponentComponent {
     })
   }
 
+  deleteGames(id: number){
+    this.api.deleteGame(id).subscribe({
+      next: (res)=>{
+        alert("Data deleted successfully");
+        this.GetAllGames();
+      },
+      error: (err)=>{
+        console.log(err);
+      }
+    })
+  }
 
 }
