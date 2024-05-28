@@ -32,6 +32,18 @@ export class GameComponentComponent {
     })
   }
 
+  editGames(id: number, data: any){
+    this.api.updateGame(data, id).subscribe({
+      next: (res)=>{
+        alert("Data edited successfully");
+        this.GetAllGames();
+      },
+      error: (err)=>{
+        console.log(err);
+      }
+    })
+  }
+
   deleteGames(id: number){
     this.api.deleteGame(id).subscribe({
       next: (res)=>{
