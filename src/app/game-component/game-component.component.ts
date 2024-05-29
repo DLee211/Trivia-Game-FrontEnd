@@ -9,8 +9,10 @@ import {MatSort} from "@angular/material/sort";
   templateUrl: './game-component.component.html',
   styleUrl: './game-component.component.css'
 })
-export class GameComponentComponent {
 
+export class GameComponentComponent {
+  title = "Quiz-Game-Front-End";
+  displayedColumns: string[] = ['GameId', 'GameType', 'PlayerId', 'Score', 'Quiz'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -18,6 +20,10 @@ export class GameComponentComponent {
   constructor(private api : ApiService)
   {
   }
+  ngOnInit(){
+    this.GetAllGames();
+  }
+
   GetAllGames()
   {
     this.api.getGame().subscribe({

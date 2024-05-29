@@ -8,6 +8,8 @@ import { QuizComponentComponent } from './quiz-component/quiz-component.componen
 import { QuestionComponentComponent } from './question-component/question-component.component';
 import {MatButton} from "@angular/material/button";
 import { HomeComponentComponent } from './home-component/home-component.component';
+import {MatCell, MatColumnDef, MatHeaderCell, MatTableModule} from "@angular/material/table";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,12 @@ import { HomeComponentComponent } from './home-component/home-component.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatButton
+    MatButton,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [
     provideClientHydration(),
