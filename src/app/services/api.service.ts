@@ -17,6 +17,10 @@ export class ApiService {
     return this.http.get<any>('http://localhost:5249/Game/')
   }
 
+  getGameById(id: number) {
+    return this.http.get<any>('http://localhost:5249/Game/' + id)
+  }
+
   updateGame(data: any, id: number) {
     return this.http.put<any>('http://localhost:5249/Game/' + id, data)
   }
@@ -33,6 +37,10 @@ export class ApiService {
     return this.http.get<any>('http://localhost:5249/Quiz/')
   }
 
+  getQuizById(id: number) {
+    return this.http.get<any>('http://localhost:5249/Quiz/' + id)
+  }
+
   updateQuiz(data: any, id: number) {
     return this.http.put<any>('http://localhost:5249/Quiz/' + id, data)
   }
@@ -47,6 +55,10 @@ export class ApiService {
 
   getQuestion() {
     return this.http.get<any>('http://localhost:5249/Question/')
+  }
+
+  getQuestionById(id: number) {
+    return this.http.get<any>('http://localhost:5249/Question/' + id)
   }
 
   updateQuestion(data: any, id: number) {
