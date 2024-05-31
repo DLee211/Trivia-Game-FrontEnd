@@ -30,7 +30,7 @@ Hello
     <ng-container matColumnDef="button">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let row">
-        <button mat-stroked-button [routerLink]="['/quiz']">START</button>
+        <button mat-stroked-button [routerLink]="['/quiz', row.gameId]">START</button>
       </td>
     </ng-container>
 

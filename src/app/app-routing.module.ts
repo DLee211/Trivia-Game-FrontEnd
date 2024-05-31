@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeComponentComponent },
   { path: 'game', component: GameComponentComponent },
   { path: 'quiz', component: QuizComponentComponent },
+  { path: 'quiz/:id', component: QuizComponentComponent },
   { path: 'question', component: QuestionComponentComponent }
 ];
 

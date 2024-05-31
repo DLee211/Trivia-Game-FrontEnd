@@ -33,6 +33,20 @@ export class QuestionComponentComponent {
     })
   }
 
+  GetQuestionById(id: number)
+  {
+    this.api.getQuestionById(id).subscribe({
+      next: (res)=>{
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error: (err)=>{
+        console.log(err);
+      }
+    })
+  }
+
   editQuestions(id: number, data: any){
     this.api.updateQuestion(data, id).subscribe({
       next: (res)=>{
