@@ -10,6 +10,7 @@ import {ApiService} from "../services/api.service";
   styleUrl: './quiz-component.component.css'
 })
 export class QuizComponentComponent {
+  displayedColumns: string[] = ['QuizId', 'Level', 'button'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
