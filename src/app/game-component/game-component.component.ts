@@ -28,6 +28,7 @@ export class GameComponentComponent {
   {
     this.api.getGame().subscribe({
       next: (res)=>{
+        console.log('Response:', res);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
