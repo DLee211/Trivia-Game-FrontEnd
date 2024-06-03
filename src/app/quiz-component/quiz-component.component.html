@@ -1,18 +1,31 @@
-<div class ="container">
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    <!-- QuizId Column -->
-    <ng-container matColumnDef="QuizId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> QuizID </th>
+<div class="container">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- quizId Column -->
+    <ng-container matColumnDef="quizId">
+      <th mat-header-cell *matHeaderCellDef> QuizID </th>
       <td mat-cell *matCellDef="let row"> {{row.quizId}} </td>
     </ng-container>
 
-    <!--level  Column -->
-    <ng-container matColumnDef="Level">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Difficulty </th>
+    <!-- difficulty Column -->
+    <ng-container matColumnDef="difficulty">
+      <th mat-header-cell *matHeaderCellDef> Difficulty </th>
       <td mat-cell *matCellDef="let row"> {{row.difficulty}} </td>
     </ng-container>
 
-    <!-- Button Column -->
+    <!-- gameId Column -->
+    <ng-container matColumnDef="gameId">
+      <th mat-header-cell *matHeaderCellDef> GameId </th>
+      <td mat-cell *matCellDef="let row"> {{row.gameId}} </td>
+    </ng-container>
+
+    <!-- questions Column -->
+    <ng-container matColumnDef="questions">
+      <th mat-header-cell *matHeaderCellDef> Questions </th>
+      <td mat-cell *matCellDef="let row"> {{row.questions}} </td>
+    </ng-container>
+
+    <!-- button Column -->
     <ng-container matColumnDef="button">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let row">

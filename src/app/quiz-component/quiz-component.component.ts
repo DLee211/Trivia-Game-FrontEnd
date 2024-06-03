@@ -13,8 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 
 
 export class QuizComponentComponent {
-  displayedColumns: string[] = ['QuizId', 'Level', 'button'];
+  displayedColumns: string[] = ['quizId', 'difficulty', 'gameId', 'questions', 'button'];
   dataSource!: MatTableDataSource<any>;
+  gameId!: number; // Add this line
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -24,7 +25,9 @@ export class QuizComponentComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      console.log('Params:', params); // Log the params
       const gameId = +params['id']; // '+' is used to convert the parameter to a number
+      console.log('Game ID:', gameId); // Log the gameId
       this.GetQuizzesByGameId(gameId);
     });
   }
@@ -45,10 +48,12 @@ export class QuizComponentComponent {
   }
 
   GetQuizzesByGameId(gameId: number) {
-    console.log(gameId)
+    console.log('Fetching quizzes for game ID:', gameId); // Log the gameId
     this.api.getQuizzesByGameId(gameId).subscribe({
       next: (res)=>{
-        this.dataSource = new MatTableDataSource(res);
+        console.log('Response:', res); // Log the response
+        const data = Array.isArray(res) ? res : [res];
+        this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.changeDetectorRefs.detectChanges(); // Manually trigger change detection
