@@ -1,8 +1,9 @@
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ApiService} from "../services/api.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-question-component',
@@ -10,15 +11,23 @@ import {ApiService} from "../services/api.service";
   styleUrl: './question-component.component.css'
 })
 export class QuestionComponentComponent {
-
+  displayedColumns: string[] = ['questionId', 'problem', 'answer'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api : ApiService)
+  constructor(private api : ApiService,private route: ActivatedRoute, private changeDetectorRefs: ChangeDetectorRef)
   {
   }
 
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log('Params:', params); // Log the params
+      const quizId = +params['id']; // '+' is used to convert the parameter to a number
+      console.log('Game ID:', quizId); // Log the gameId
+      this.GetQuestionById(quizId);
+    });
+  }
   GetAllQuestions()
   {
     this.api.getQuestion().subscribe({
