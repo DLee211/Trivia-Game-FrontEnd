@@ -12,7 +12,7 @@ import {MatSort} from "@angular/material/sort";
 
 export class GameComponentComponent {
   title = "Quiz-Game-Front-End";
-  displayedColumns: string[] = ['GameId', 'GameType', 'PlayerId', 'Score', 'button'];
+  displayedColumns: string[] = ['GameId', 'GameType', 'Score', 'button'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
