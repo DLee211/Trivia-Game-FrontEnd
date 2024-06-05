@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 export class QuizComponentComponent {
-  displayedColumns: string[] = ['quizId', 'difficulty', 'button'];
+  displayedColumns: string[] = ['difficulty', 'button'];
   dataSource!: MatTableDataSource<any>;
   gameId!: number; // Add this line
   @ViewChild(MatPaginator) paginator!: MatPaginator;
