@@ -17,3 +17,8 @@
   cursor: pointer;
   margin: 10px;
 }
+
+.game-card mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
