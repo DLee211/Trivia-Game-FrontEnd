@@ -25,9 +25,9 @@ export class QuizComponentComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log('Params:', params); // Log the params
-      const gameId = +params['id']; // '+' is used to convert the parameter to a number
-      console.log('Game ID:', gameId); // Log the gameId
+      console.log('Params:', params);
+      const gameId = +params['id'];
+      console.log('Game ID:', gameId);
       this.GetQuizzesByGameId(gameId);
     });
   }
@@ -36,7 +36,7 @@ export class QuizComponentComponent {
   GetAllQuizzes(){
     this.api.getQuiz().subscribe({
       next: (res)=>{
-        console.log('Response:', res); // Log the response
+        console.log('Response:', res);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -48,15 +48,15 @@ export class QuizComponentComponent {
   }
 
   GetQuizzesByGameId(gameId: number) {
-    console.log('Fetching quizzes for game ID:', gameId); // Log the gameId
+    console.log('Fetching quizzes for game ID:', gameId);
     this.api.getQuizzesByGameId(gameId).subscribe({
       next: (res)=>{
-        console.log('Response:', res); // Log the response
+        console.log('Response:', res);
         const data = Array.isArray(res) ? res : [res];
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.changeDetectorRefs.detectChanges(); // Manually trigger change detection
+        this.changeDetectorRefs.detectChanges();
       },
       error: (err)=>{
         console.log(err);

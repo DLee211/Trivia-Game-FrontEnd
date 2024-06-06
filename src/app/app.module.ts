@@ -10,6 +10,14 @@ import {MatButton} from "@angular/material/button";
 import { HomeComponentComponent } from './home-component/home-component.component';
 import {MatCell, MatColumnDef, MatHeaderCell, MatTableModule} from "@angular/material/table";
 import {HttpClientModule} from "@angular/common/http";
+import {
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardHeader, MatCardModule,
+  MatCardSmImage,
+  MatCardSubtitle
+} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -27,7 +35,13 @@ import {HttpClientModule} from "@angular/common/http";
     MatHeaderCell,
     MatCell,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatCard,
+    MatCardSubtitle,
+    MatCardHeader,
+    MatCardContent,
+    MatCardActions,
+    MatCardModule
   ],
   providers: [
     provideClientHydration(),
