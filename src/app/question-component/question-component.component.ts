@@ -42,11 +42,17 @@ export class QuestionComponentComponent {
     })
   }
 
-  GetQuestionById(id: number)
-  {
+  GetQuestionById(id: number) {
     this.api.getQuestionById(id).subscribe({
       next: (res)=>{
-        this.dataSource = new MatTableDataSource(res);
+        // Ensure the response is an array
+        const questions = Array.isArray(res) ? res : [res];
+        // Generate a random index
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        // Select the question at the random index
+        const randomQuestion = questions[randomIndex];
+        // Create a new MatTableDataSource with the random question
+        this.dataSource = new MatTableDataSource([randomQuestion]);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
