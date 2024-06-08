@@ -1,0 +1,12 @@
+.container {
+  font-size: 10em; /* adjust this value to make the text larger */
+}
+
+table {
+  width: 250%;
+}
+
+button {
+  font-size: 2em; /* adjust this value to make the text inside the button larger */
+  padding: 20px 40px;
+}
