@@ -6,10 +6,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { GameComponentComponent } from './game-component/game-component.component';
 import { QuizComponentComponent } from './quiz-component/quiz-component.component';
 import { QuestionComponentComponent } from './question-component/question-component.component';
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import { HomeComponentComponent } from './home-component/home-component.component';
 import {MatCell, MatColumnDef, MatHeaderCell, MatTableModule} from "@angular/material/table";
 import {HttpClientModule} from "@angular/common/http";
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 import {
   MatCard,
   MatCardActions,
@@ -18,6 +20,10 @@ import {
   MatCardSmImage,
   MatCardSubtitle
 } from "@angular/material/card";
+import {MatFormField} from "@angular/material/form-field";
+import {FormsModule} from "@angular/forms";
+import {MatIcon} from "@angular/material/icon";
+import {MatInput} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -41,7 +47,13 @@ import {
     MatCardHeader,
     MatCardContent,
     MatCardActions,
-    MatCardModule
+    MatCardModule,
+    MatFormField,
+    FormsModule,
+    MatIcon,
+    MatFormFieldModule,
+    MatInput,
+    MatIconButton
   ],
   providers: [
     provideClientHydration(),
