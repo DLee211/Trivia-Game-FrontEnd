@@ -45,6 +45,13 @@ export class QuestionComponentComponent {
     })
   }
 
+  checkAnswer(userAnswer: string, correctAnswer: string): void {
+    if (userAnswer === correctAnswer) {
+      window.alert('Correct answer!');
+    } else {
+      window.alert('Incorrect answer. Please try again.');
+    }
+  }
   GetQuestionById(id: number) {
     this.api.getQuestionById(id).subscribe({
       next: (res)=>{
