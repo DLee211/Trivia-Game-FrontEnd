@@ -7,6 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
+
 @Component({
   selector: 'app-question-component',
   templateUrl: './question-component.component.html',
@@ -53,7 +54,8 @@ export class QuestionComponentComponent {
     if (userAnswer === correctAnswer) {
       window.alert('Correct answer!');
       this.selectRandomQuestion();
-    } else {
+    }
+    else {
       window.alert('Incorrect answer. Please try again.');
     }
   }
