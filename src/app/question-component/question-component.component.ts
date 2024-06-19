@@ -25,16 +25,10 @@ export class QuestionComponentComponent {
   }
 
   ngOnInit() {
-    this.api.getQuestion().subscribe({
-      next: (res)=>{
-        console.log('Response:', res);
-        this.allQuestions = res;
-        this.selectRandomQuestion();
-      },
-      error: (err)=>{
-        console.log(err);
-      }
-    })
+    this.route.params.subscribe(params => {
+      const id = +params['id']; // the '+' operator converts the string to a number
+      this.GetQuestionById(id);
+    });
   }
   GetAllQuestions()
   {
@@ -66,21 +60,14 @@ export class QuestionComponentComponent {
   GetQuestionById(id: number) {
     this.api.getQuestionById(id).subscribe({
       next: (res)=>{
-        // Ensure the response is an array
-        const questions = Array.isArray(res) ? res : [res];
-        // Generate a random index
-        const randomIndex = Math.floor(Math.random() * questions.length);
-        // Select the question at the random index
-        const randomQuestion = questions[randomIndex];
-        // Create a new MatTableDataSource with the random question
-        this.dataSource = new MatTableDataSource([randomQuestion]);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        console.log('Response:', res);
+        this.allQuestions = Array.isArray(res) ? res : [res];
+        this.selectRandomQuestion();
       },
       error: (err)=>{
         console.log(err);
       }
-    })
+    });
   }
 
   editQuestions(id: number, data: any){
