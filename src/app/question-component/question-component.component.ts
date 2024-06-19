@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class QuestionComponentComponent {
   displayedColumns: string[] = ['questionId', 'problem', 'answer'];
+  allQuestions: any[] = [];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -24,12 +25,16 @@ export class QuestionComponentComponent {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      console.log('Params:', params); // Log the params
-      const quizId = +params['id']; // '+' is used to convert the parameter to a number
-      console.log('Game ID:', quizId); // Log the gameId
-      this.GetQuestionById(quizId);
-    });
+    this.api.getQuestion().subscribe({
+      next: (res)=>{
+        console.log('Response:', res);
+        this.allQuestions = res;
+        this.selectRandomQuestion();
+      },
+      error: (err)=>{
+        console.log(err);
+      }
+    })
   }
   GetAllQuestions()
   {
@@ -45,9 +50,15 @@ export class QuestionComponentComponent {
     })
   }
 
+  selectRandomQuestion() {
+    const randomIndex = Math.floor(Math.random() * this.allQuestions.length);
+    this.dataSource = new MatTableDataSource([this.allQuestions[randomIndex]]);
+  }
+
   checkAnswer(userAnswer: string, correctAnswer: string): void {
     if (userAnswer === correctAnswer) {
       window.alert('Correct answer!');
+      this.selectRandomQuestion();
     } else {
       window.alert('Incorrect answer. Please try again.');
     }
