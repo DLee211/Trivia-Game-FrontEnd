@@ -4,6 +4,8 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ApiService} from "../services/api.service";
 import {ActivatedRoute} from "@angular/router";
+import { Router } from '@angular/router';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
@@ -19,9 +21,10 @@ export class QuestionComponentComponent {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  questionCount = 0;
   value: any;
 
-  constructor(private api : ApiService,private route: ActivatedRoute, private changeDetectorRefs: ChangeDetectorRef)
+  constructor(private api : ApiService,private route: ActivatedRoute, private changeDetectorRefs: ChangeDetectorRef,private router: Router)
   {
   }
 
@@ -54,9 +57,17 @@ export class QuestionComponentComponent {
     if (userAnswer === correctAnswer) {
       window.alert('Correct answer!');
       this.selectRandomQuestion();
+    } else {
+      window.alert('Incorrect answer.');
+      this.selectRandomQuestion();
     }
-    else {
-      window.alert('Incorrect answer. Please try again.');
+
+    this.questionCount++;
+
+    console.log('Current question count:', this.questionCount);
+
+    if (this.questionCount > 5) {
+      this.router.navigate(['/game']); // adjust the path to your actual game component
     }
   }
   GetQuestionById(id: number) {
