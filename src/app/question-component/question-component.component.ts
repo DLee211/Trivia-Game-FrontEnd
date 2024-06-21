@@ -34,6 +34,31 @@ export class QuestionComponentComponent {
       this.GetQuestionById(id);
     });
   }
+
+  // Add a new property to hold the score
+  gameScore: number = 0;
+
+  updateGameScore(gameId: number, newScore: number): void {
+    this.api.getGameById(gameId).subscribe({
+      next: (game) => {
+        const gameType = game.gameType;
+        console.log('Game Type:', gameType);
+        const gameData = { score: newScore, gameType: gameType }; // Include the gameType in the gameData
+        this.api.updateGame(gameData, gameId).subscribe({
+          next: (res) => {
+            console.log('Game score updated:', res);
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
   GetAllQuestions()
   {
     this.api.getQuestion().subscribe({
@@ -53,12 +78,15 @@ export class QuestionComponentComponent {
     this.dataSource = new MatTableDataSource([this.allQuestions[randomIndex]]);
   }
 
-  checkAnswer(userAnswer: string, correctAnswer: string): void {
+  checkAnswer(userAnswer: string, correctAnswer: string, questionId: number): void {
     if (userAnswer === correctAnswer) {
       window.alert('Correct answer!');
+      this.gameScore++;
+      console.log('Current score:', this.gameScore);
       this.selectRandomQuestion();
     } else {
       window.alert('Incorrect answer.');
+      console.log('Current score:', this.gameScore);
       this.selectRandomQuestion();
     }
 
@@ -67,6 +95,15 @@ export class QuestionComponentComponent {
     console.log('Current question count:', this.questionCount);
 
     if (this.questionCount > 5) {
+      this.api.getGameIdByQuestionId(questionId).subscribe({
+        next: (gameId) => {
+          this.updateGameScore(gameId, this.gameScore); // Include the gameType when calling updateGameScore
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+      window.alert('Finished!');
       this.router.navigate(['/game']); // adjust the path to your actual game component
     }
   }

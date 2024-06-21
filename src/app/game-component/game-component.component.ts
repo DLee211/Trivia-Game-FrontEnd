@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from "../services/api.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -10,12 +10,13 @@ import {MatSort} from "@angular/material/sort";
   styleUrl: './game-component.component.css'
 })
 
-export class GameComponentComponent {
+export class GameComponentComponent implements OnInit{
   title = "Quiz-Game-Front-End";
   displayedColumns: string[] = ['GameType', 'Score', 'button'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
 
   constructor(private api : ApiService)
   {

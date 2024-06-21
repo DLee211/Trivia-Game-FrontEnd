@@ -68,4 +68,8 @@ export class ApiService {
   deleteQuestion(id: number) {
     return this.http.delete<any>('http://localhost:5249/Question/' + id)
   }
+
+  getGameIdByQuestionId(questionId: number) {
+    return this.http.get<any>('http://localhost:5249/Question/' + questionId + '/gameId');
+  }
 }
