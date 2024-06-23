@@ -6,7 +6,9 @@ import {ApiService} from "../services/api.service";
 import {ActivatedRoute} from "@angular/router";
 import { Router } from '@angular/router';
 
+
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {Observable} from "rxjs";
 
 
 
@@ -38,24 +40,30 @@ export class QuestionComponentComponent {
   // Add a new property to hold the score
   gameScore: number = 0;
 
-  updateGameScore(gameId: number, newScore: number): void {
-    this.api.getGameById(gameId).subscribe({
-      next: (game) => {
-        const gameType = game.gameType;
-        console.log('Game Type:', gameType);
-        const gameData = { score: newScore, gameType: gameType }; // Include the gameType in the gameData
-        this.api.updateGame(gameData, gameId).subscribe({
-          next: (res) => {
-            console.log('Game score updated:', res);
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
-      },
-      error: (err) => {
-        console.log(err);
-      }
+  updateGameScore(gameId: number, newScore: number): Observable<any> {
+    return new Observable(observer => {
+      this.api.getGameById(gameId).subscribe({
+        next: (game) => {
+          const gameType = game.gameType;
+          console.log('Game Type:', gameType);
+          const gameData = { score: newScore, gameType: gameType }; // Include the gameType in the gameData
+          this.api.updateGame(gameData, gameId).subscribe({
+            next: (res) => {
+              console.log('Game score updated:', res);
+              observer.next(res);
+              observer.complete();
+            },
+            error: (err) => {
+              console.log(err);
+              observer.error(err);
+            }
+          });
+        },
+        error: (err) => {
+          console.log(err);
+          observer.error(err);
+        }
+      });
     });
   }
 
@@ -94,17 +102,23 @@ export class QuestionComponentComponent {
 
     console.log('Current question count:', this.questionCount);
 
-    if (this.questionCount > 5) {
+    if (this.questionCount >= 5) {
       this.api.getGameIdByQuestionId(questionId).subscribe({
         next: (gameId) => {
-          this.updateGameScore(gameId, this.gameScore); // Include the gameType when calling updateGameScore
+          this.updateGameScore(gameId, this.gameScore).subscribe({
+            next: (res) => {
+              window.alert('Finished!');
+              this.router.navigate(['/game']);
+            },
+            error: (err) => {
+              console.log(err);
+            }
+          });
         },
         error: (err) => {
           console.log(err);
         }
       });
-      window.alert('Finished!');
-      this.router.navigate(['/game']); // adjust the path to your actual game component
     }
   }
   GetQuestionById(id: number) {

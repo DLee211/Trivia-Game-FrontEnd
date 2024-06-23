@@ -3,6 +3,7 @@ import {ApiService} from "../services/api.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-game-component',
@@ -11,6 +12,7 @@ import {MatSort} from "@angular/material/sort";
 })
 
 export class GameComponentComponent implements OnInit{
+  game:any;
   title = "Quiz-Game-Front-End";
   displayedColumns: string[] = ['GameType', 'Score', 'button'];
   dataSource!: MatTableDataSource<any>;
@@ -18,10 +20,17 @@ export class GameComponentComponent implements OnInit{
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private api : ApiService)
+  constructor(private api : ApiService, private route: ActivatedRoute)
   {
   }
   ngOnInit(){
+    this.route.params.subscribe(params => {
+      const id = +params['id']; // the '+' operator converts the string to a number
+      this.api.getGameById(id).subscribe(game => {
+        this.game = game;
+        console.log('Updated score:', this.game.score);
+      });
+    });
     this.GetAllGames();
   }
 
