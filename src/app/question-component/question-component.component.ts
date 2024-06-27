@@ -18,7 +18,8 @@ import {Observable} from "rxjs";
   styleUrl: './question-component.component.css'
 })
 export class QuestionComponentComponent {
-  displayedColumns: string[] = ['questionId', 'problem', 'answer'];
+  displayedColumns: string[] = ['problem'];
+  displayedColumns2: string[] = ['answer'];
   allQuestions: any[] = [];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
