@@ -20,11 +20,11 @@ import {Observable} from "rxjs";
 export class QuestionComponentComponent {
   displayedColumns: string[] = ['problem'];
   displayedColumns2: string[] = ['answer'];
+  wrongAnswerCount = 0;
   allQuestions: any[] = [];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  questionCount = 0;
   value: any;
 
   constructor(private api : ApiService,private route: ActivatedRoute, private changeDetectorRefs: ChangeDetectorRef,private router: Router)
@@ -38,7 +38,6 @@ export class QuestionComponentComponent {
     });
   }
 
-  // Add a new property to hold the score
   gameScore: number = 0;
 
   updateGameScore(gameId: number, newScore: number): Observable<any> {
@@ -95,15 +94,12 @@ export class QuestionComponentComponent {
       this.selectRandomQuestion();
     } else {
       window.alert('Incorrect answer.');
+      this.wrongAnswerCount++;
       console.log('Current score:', this.gameScore);
       this.selectRandomQuestion();
     }
 
-    this.questionCount++;
-
-    console.log('Current question count:', this.questionCount);
-
-    if (this.questionCount >= 5) {
+    if (this.wrongAnswerCount >= 3) {
       this.api.getGameIdByQuestionId(questionId).subscribe({
         next: (gameId) => {
           this.updateGameScore(gameId, this.gameScore).subscribe({
@@ -115,9 +111,6 @@ export class QuestionComponentComponent {
               console.log(err);
             }
           });
-        },
-        error: (err) => {
-          console.log(err);
         }
       });
     }
