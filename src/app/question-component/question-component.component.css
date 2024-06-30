@@ -18,3 +18,9 @@
   justify-content: center;
   text-align: center;
 }
+
+.strike {
+  color: red;
+  font-size: 40px;
+  margin-right: 5px;
+}
