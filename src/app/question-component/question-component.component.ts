@@ -26,6 +26,8 @@ export class QuestionComponentComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   value: any;
+  isAnswerCorrect = false;
+  isAnswerSubmitted = false;
 
   constructor(private api : ApiService,private route: ActivatedRoute, private changeDetectorRefs: ChangeDetectorRef,private router: Router)
   {
@@ -87,16 +89,16 @@ export class QuestionComponentComponent {
   }
 
   checkAnswer(userAnswer: string, correctAnswer: string, questionId: number): void {
-    if (userAnswer === correctAnswer) {
-      window.alert('Correct answer!');
+    this.isAnswerCorrect = userAnswer === correctAnswer;
+    this.isAnswerSubmitted = true;
+
+
+    if (this.isAnswerCorrect) {
       this.gameScore++;
       console.log('Current score:', this.gameScore);
-      this.selectRandomQuestion();
     } else {
-      window.alert('Incorrect answer.');
       this.wrongAnswerCount++;
       console.log('Current score:', this.gameScore);
-      this.selectRandomQuestion();
     }
 
     if (this.wrongAnswerCount >= 3) {

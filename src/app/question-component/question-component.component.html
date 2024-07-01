@@ -5,21 +5,36 @@
           X
         </span>
     </div>
-
     <div *ngFor="let row of dataSource.data">
       <div class="question">
         <h2>Question</h2>
         <p>{{row.problem}}</p>
       </div>
 
-      <div class="answer">
+      <div class="answer" *ngIf="!isAnswerSubmitted">
         <h2>Answer</h2>
         <mat-form-field class="input-form-field">
           <mat-label>Answer</mat-label>
           <input matInput type="text" [(ngModel)]="row.value">
         </mat-form-field>
+        <h2>
+          <button (click)="checkAnswer(row.value, row.answer,row.questionId)">Submit</button>
+        </h2>
+        <h2>
+          <p>
+            Score: {{gameScore}}
+          </p>
+        </h2>
       </div>
-      <button (click)="checkAnswer(row.value, row.answer,row.questionId)">Submit</button>
+
+      <div *ngIf="isAnswerSubmitted">
+        <p>CORRECT ANSWER: {{row.answer}}</p>
+        <p>YOUR ANSWER: {{row.value}}</p>
+        <h2>
+          <button (click)="selectRandomQuestion(); isAnswerSubmitted = false;">Next Question</button>
+        </h2>
+        <p>{{isAnswerCorrect ? 'CORRECT' : 'INCORRECT'}}</p>
+      </div>
     </div>
   </mat-card>
 </div>
