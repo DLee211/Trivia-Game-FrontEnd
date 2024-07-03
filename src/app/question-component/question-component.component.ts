@@ -102,17 +102,37 @@ export class QuestionComponentComponent {
     }
 
     if (this.wrongAnswerCount >= 3) {
+      console.log('questionid:', questionId)
       this.api.getGameIdByQuestionId(questionId).subscribe({
-        next: (gameId) => {
-          this.updateGameScore(gameId, this.gameScore).subscribe({
-            next: (res) => {
-              window.alert('Finished!');
-              this.router.navigate(['/game']);
+        next: (gameIdResponse) => {
+          this.api.getGameById(gameIdResponse).subscribe({
+            next: (game) => {
+              console.log('Game:', game)
+              const currentHighScore = game.score;
+              console.log('Current high score:', currentHighScore);
+              console.log('Game score:', this.gameScore);
+              if (this.gameScore > currentHighScore) {
+                this.updateGameScore(gameIdResponse, this.gameScore).subscribe({
+                  next: (res) => {
+                    window.alert('Finished!');
+                    this.router.navigate(['/game']);
+                  },
+                  error: (err) => {
+                    console.log(err);
+                  }
+                });
+              } else {
+                window.alert('Finished!');
+                this.router.navigate(['/game']);
+              }
             },
             error: (err) => {
               console.log(err);
             }
           });
+        },
+        error: (err) => {
+          console.log(err);
         }
       });
     }
