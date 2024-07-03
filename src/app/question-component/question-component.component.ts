@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {Observable} from "rxjs";
 
-
-
 @Component({
   selector: 'app-question-component',
   templateUrl: './question-component.component.html',
@@ -89,11 +87,17 @@ export class QuestionComponentComponent {
   }
 
   checkAnswer(userAnswer: string, correctAnswer: string, questionId: number): void {
-    const distance = levenshtein(userAnswer.toLowerCase(), correctAnswer.toLowerCase());
-    const threshold = 2;
-    this.isAnswerCorrect = distance <= threshold;
-    this.isAnswerSubmitted = true;
-
+    if (correctAnswer.length <= 3) {
+      this.isAnswerCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+      this.isAnswerSubmitted = true;
+    }
+    else
+    {
+      const distance = levenshtein(userAnswer.toLowerCase(), correctAnswer.toLowerCase());
+      const threshold = 2;
+      this.isAnswerCorrect = distance <= threshold;
+      this.isAnswerSubmitted = true;
+    }
 
     if (this.isAnswerCorrect) {
       this.gameScore++;

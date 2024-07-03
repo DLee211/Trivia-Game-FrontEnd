@@ -15,8 +15,7 @@
         <h2>Answer</h2>
         <mat-form-field class="input-form-field">
           <mat-label>Answer</mat-label>
-          <input matInput type="text" [(ngModel)]="row.value">
-        </mat-form-field>
+          <input matInput type="text" [(ngModel)]="row.value" (keyup.enter)="checkAnswer(row.value, row.answer, row.questionId)">        </mat-form-field>
         <h2>
           <button (click)="checkAnswer(row.value, row.answer,row.questionId)">Submit</button>
         </h2>
