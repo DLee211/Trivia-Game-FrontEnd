@@ -81,9 +81,25 @@ export class QuestionComponentComponent {
     })
   }
 
-  selectRandomQuestion() {
-    const randomIndex = Math.floor(Math.random() * this.allQuestions.length);
-    this.dataSource = new MatTableDataSource([this.allQuestions[randomIndex]]);
+  selectRandomQuestion(questionId: number) {
+    if(this.allQuestions.length > 0) {
+      const randomIndex = Math.floor(Math.random() * this.allQuestions.length);
+      const selectedQuestion = this.allQuestions[randomIndex];
+      this.allQuestions.splice(randomIndex, 1);
+      this.dataSource = new MatTableDataSource([selectedQuestion]);
+    }
+    else{
+      this.api.getGameIdByQuestionId(questionId).subscribe({
+        next: (gameId) => {
+          this.updateGameScore(gameId, this.gameScore).subscribe({
+            next: (res) => {
+              window.alert('Finished!');
+              this.router.navigate(['/game']);
+            }
+          });
+        }
+      });
+    }
   }
 
   checkAnswer(userAnswer: string, correctAnswer: string, questionId: number): void {
@@ -148,7 +164,7 @@ export class QuestionComponentComponent {
       next: (res)=>{
         console.log('Response:', res);
         this.allQuestions = Array.isArray(res) ? res : [res];
-        this.selectRandomQuestion();
+        this.selectRandomQuestion(id);
       },
       error: (err)=>{
         console.log(err);

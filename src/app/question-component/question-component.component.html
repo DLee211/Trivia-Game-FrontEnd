@@ -30,7 +30,7 @@
         <p>CORRECT ANSWER: {{row.answer}}</p>
         <p>YOUR ANSWER: {{row.value}}</p>
         <h2>
-          <button (click)="selectRandomQuestion(); isAnswerSubmitted = false;">Next Question</button>
+          <button (click)="selectRandomQuestion(row.questionId); isAnswerSubmitted = false;">Next Question</button>
         </h2>
         <p>{{isAnswerCorrect ? 'CORRECT' : 'INCORRECT'}}</p>
       </div>
