@@ -4,6 +4,13 @@
   align-items: center;
   height: 100vh;
 }
+
+.back-to-game
+{
+  font-size: 1em;
+  padding: 30px 50px;
+}
+
 .question-card {
   width: 700px;
   height: 500px;
