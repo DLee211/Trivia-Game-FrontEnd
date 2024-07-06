@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="back-to-game">
-      <a routerLink="/game">Back to Home Page</a>
-    </div>
   <mat-card class="question-card" appearance="outlined">
+    <div class="back-to-game">
+      <button routerLink ="/game">Back to Home Page</button>
+    </div>
     <div class="strikes">
         <span class="strike" *ngFor="let strike of [].constructor(wrongAnswerCount); let i = index">
           X
