@@ -20,7 +20,7 @@
           <mat-label>Answer</mat-label>
           <input matInput type="text" [(ngModel)]="row.value" (keyup.enter)="checkAnswer(row.value, row.answer, row.questionId)">        </mat-form-field>
         <h2>
-          <button (click)="checkAnswer(row.value, row.answer,row.questionId)">Submit</button>
+          <button mat-stroked-button (click)="checkAnswer(row.value, row.answer,row.questionId)">Submit</button>
         </h2>
         <h2>
           <p>
