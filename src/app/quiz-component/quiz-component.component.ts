@@ -64,6 +64,10 @@ export class QuizComponentComponent {
     })
   }
 
+  resetQuizHiScores(){
+
+  }
+
   editQuizzes(id: number, data: any){
     this.api.updateQuiz(data, id).subscribe({
       next: (res)=>{
