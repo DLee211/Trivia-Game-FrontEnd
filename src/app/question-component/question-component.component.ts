@@ -33,7 +33,7 @@ export class QuestionComponentComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const id = +params['id']; // the '+' operator converts the string to a number
+      const id = +params['id'];
       this.GetQuestionById(id);
     });
   }
