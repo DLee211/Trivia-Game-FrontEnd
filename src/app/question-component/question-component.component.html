@@ -1,5 +1,8 @@
 <div class="container">
   <mat-card class="question-card" appearance="outlined">
+    <div class="back-to-game">
+      <button mat-stroked-button routerLink ="/game">Back to Home Page</button>
+    </div>
     <div class="strikes">
         <span class="strike" *ngFor="let strike of [].constructor(wrongAnswerCount); let i = index">
           X
@@ -17,7 +20,7 @@
           <mat-label>Answer</mat-label>
           <input matInput type="text" [(ngModel)]="row.value" (keyup.enter)="checkAnswer(row.value, row.answer, row.questionId)">        </mat-form-field>
         <h2>
-          <button (click)="checkAnswer(row.value, row.answer,row.questionId)">Submit</button>
+          <button mat-stroked-button (click)="checkAnswer(row.value, row.answer,row.questionId)">Submit</button>
         </h2>
         <h2>
           <p>

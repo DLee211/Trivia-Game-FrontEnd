@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 export class QuizComponentComponent {
-  displayedColumns: string[] = ['difficulty', 'button'];
+  displayedColumns: string[] = ['button'];
   dataSource!: MatTableDataSource<any>;
   gameId!: number; // Add this line
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -62,6 +62,10 @@ export class QuizComponentComponent {
         console.log(err);
       }
     })
+  }
+
+  resetQuizHiScores(){
+
   }
 
   editQuizzes(id: number, data: any){

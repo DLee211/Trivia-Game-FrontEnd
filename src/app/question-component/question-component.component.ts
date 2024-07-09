@@ -93,7 +93,7 @@ export class QuestionComponentComponent {
         next: (gameId) => {
           this.updateGameScore(gameId, this.gameScore).subscribe({
             next: (res) => {
-              window.alert('Finished!');
+              window.alert('Ran out of cards!');
               this.router.navigate(['/game']);
             }
           });
@@ -110,7 +110,7 @@ export class QuestionComponentComponent {
     else
     {
       const distance = levenshtein(userAnswer.toLowerCase(), correctAnswer.toLowerCase());
-      const threshold = 2;
+      const threshold = 3;
       this.isAnswerCorrect = distance <= threshold;
       this.isAnswerSubmitted = true;
     }

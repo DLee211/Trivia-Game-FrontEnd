@@ -3,7 +3,14 @@
 }
 
 table {
-  width: 250%;
+  width: 100%;
+}
+th{
+  text-align: center;
+}
+
+td {
+  text-align: center;
 }
 
 button {
