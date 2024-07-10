@@ -24,7 +24,7 @@ import {MatFormField} from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
-import { AddQuestionComponent } from './add-question/add-question.component';
+import { EditQuestionComponent } from './edit-question/edit-question.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { AddQuestionComponent } from './add-question/add-question.component';
     QuizComponentComponent,
     QuestionComponentComponent,
     HomeComponentComponent,
-    AddQuestionComponent
+    EditQuestionComponent
   ],
   imports: [
     BrowserModule,

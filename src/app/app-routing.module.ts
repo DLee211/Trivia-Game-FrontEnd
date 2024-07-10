@@ -4,7 +4,7 @@ import {GameComponentComponent} from "./game-component/game-component.component"
 import {QuizComponentComponent} from "./quiz-component/quiz-component.component";
 import {QuestionComponentComponent} from "./question-component/question-component.component";
 import {HomeComponentComponent} from "./home-component/home-component.component";
-import {AddQuestionComponent} from "./add-question/add-question.component";
+import {EditQuestionComponent} from "./edit-question/edit-question.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponentComponent },
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'quiz/:id', component: QuizComponentComponent },
   { path: 'question', component: QuestionComponentComponent },
   { path: 'question/:id', component: QuestionComponentComponent },
-  { path: 'addquestion', component: AddQuestionComponent }
+  { path: 'editquestion', component: EditQuestionComponent }
 
 ];
 
