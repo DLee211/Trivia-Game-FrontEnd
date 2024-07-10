@@ -17,3 +17,7 @@ button {
   font-size: 2em; /* adjust this value to make the text inside the button larger */
   padding: 20px 40px;
 }
+
+answer {
+  font-size: 2em; /* adjust this value to make the text inside the answer larger */
+}

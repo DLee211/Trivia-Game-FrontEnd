@@ -13,7 +13,6 @@
         <h2>Question</h2>
         <p>{{row.problem}}</p>
       </div>
-
       <div class="answer" *ngIf="!isAnswerSubmitted">
         <h2>Answer</h2>
         <mat-form-field class="input-form-field">
@@ -33,7 +32,7 @@
         <p>CORRECT ANSWER: {{row.answer}}</p>
         <p>YOUR ANSWER: {{row.value}}</p>
         <h2>
-          <button (click)="selectRandomQuestion(row.questionId); isAnswerSubmitted = false;">Next Question</button>
+          <button  mat-stroked-button (click)="selectRandomQuestion(row.questionId); isAnswerSubmitted = false;">Next Question</button>
         </h2>
         <p>{{isAnswerCorrect ? 'CORRECT' : 'INCORRECT'}}</p>
       </div>
