@@ -24,6 +24,6 @@
 }
 
 button {
-  font-size: 1em; /* adjust this value to make the text inside the button larger */
-  padding: 30px 50px; /* adjust these values to increase the overall size of the button */
+  font-size: 1em;
+  padding: 30px 50px;
 }

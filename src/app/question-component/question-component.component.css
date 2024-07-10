@@ -31,3 +31,8 @@
   font-size: 40px;
   margin-right: 5px;
 }
+
+.add-question-button {
+  text-align: center;
+  margin-top: 20px;
+}
