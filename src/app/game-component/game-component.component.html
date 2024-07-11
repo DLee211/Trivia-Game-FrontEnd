@@ -7,7 +7,7 @@
       </mat-card-header>
       <mat-card-actions>
         <div class="add-question-button">
-          <button mat-stroked-button routerLink="/editquestion">Edit</button>
+          <button mat-stroked-button [routerLink]="['/editquestion',row.gameId]">Edit</button>
         </div>
         <button mat-stroked-button [routerLink]="['/quiz', row.gameId]">START</button>
       </mat-card-actions>
