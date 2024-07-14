@@ -38,7 +38,7 @@ export class ApiService {
   }
 
   getQuizzesByGameId(id: number) {
-    return this.http.get<any>('http://localhost:5249/Quiz/' + id)
+    return this.http.get<any>('http://localhost:5249/Quiz/game/' + id)
   }
 
   updateQuiz(data: any, id: number) {

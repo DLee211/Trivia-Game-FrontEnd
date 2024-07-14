@@ -5,41 +5,42 @@ import {MatSort} from "@angular/material/sort";
 import {MatDialog} from "@angular/material/dialog";
 import {ApiService} from "../services/api.service";
 import {ActivatedRoute} from "@angular/router";
-
+import { Question } from '../question.interface';
 @Component({
   selector: 'app-edit-question',
   templateUrl: './edit-question.component.html',
-  styleUrl: './edit-question.component.css'
+  styleUrls: ['./edit-question.component.css'] // Corrected property name and ensured it's an array
 
 })
 export class EditQuestionComponent implements OnInit {
-  displayedColumns: string[] = ['Difficulty','Question','Answer'];
+  displayedColumns: string[] = ['Difficulty', 'Question', 'Answer'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private dialog : MatDialog, private api : ApiService,private route: ActivatedRoute)
-  {
+
+
+  constructor(private dialog: MatDialog, private api: ApiService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const id = +params['id']; // "+" converts the parameter to a number
-      if (id) {
-        this.GetAllTriviaData(id);
-      }
+      const id = +params['id'];
+      console.log('Game ID:', id)
+      this.GetAllTriviaData(id);
     });
   }
 
-  GetAllTriviaData(id: number)
-  {
+  GetAllTriviaData(id: number) {
     this.api.getQuizzesByGameId(id).subscribe({
-      next: (res)=>{
-        this.dataSource = new MatTableDataSource(res);
+      next: (res) => {
+        const flattenedData = this.flattenData(res);
+        console.log('Flattened Data:', flattenedData)
+        this.dataSource = new MatTableDataSource(flattenedData);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
-      error: (err)=>{
+      error: (err) => {
         console.log(err);
       }
     })
@@ -52,6 +53,20 @@ export class EditQuestionComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  flattenData(data: any) {
+    const flattened = data.reduce((acc: any, item: any) => {
+      const questions = item.questions.map((q: Question) => ({
+        difficulty: item.difficulty,
+        gameId: item.gameId,
+        questionId: q.questionId,
+        problem: q.problem,
+        answer: q.answer
+      }));
+      return [...acc, ...questions];
+    }, []);
+    return flattened;
   }
 }
 
