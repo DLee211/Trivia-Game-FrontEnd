@@ -25,6 +25,8 @@ import {FormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import { EditQuestionComponent } from './edit-question/edit-question.component';
+import {MatToolbar} from "@angular/material/toolbar";
+import {MatPaginator} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { EditQuestionComponent } from './edit-question/edit-question.component';
     MatIcon,
     MatFormFieldModule,
     MatInput,
-    MatIconButton
+    MatIconButton,
+    MatToolbar,
+    MatPaginator
   ],
   providers: [
     provideClientHydration(),
