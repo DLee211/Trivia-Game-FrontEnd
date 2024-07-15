@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Add Trivia Data</h1>
+<div>
+<div mat-dialog-content>
+  <form [formGroup] = "questionForm">
+    <mat-form-field  appearance="outline">
+      <mat-label>Difficulty</mat-label>
+      <mat-select formControlName="difficulty">
+        <mat-option value="Easy">Easy</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="Hard">Hard</mat-option>
+      </mat-select></mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Question</mat-label>
+      <input formControlName="problem" matInput placeholder="Question">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Answer</mat-label>
+      <input formControlName="answer" matInput placeholder="Answer">
+    </mat-form-field>
+    <br>
+  <button mat-raised-button color ="warn" mat-dialog-close>Close</button>
+  <button style="margin-left: 8px;" mat-raised-button color ="primary" (click)="addQuestionForm()" >{{actionBtn}}</button>
+  </form>
+</div>
+</div>
+
