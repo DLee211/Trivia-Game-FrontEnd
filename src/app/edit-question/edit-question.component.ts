@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ApiService} from "../services/api.service";
 import {ActivatedRoute} from "@angular/router";
 import { Question } from '../question.interface';
+import {DialogComponentComponent} from "../dialog-component/dialog-component.component";
 @Component({
   selector: 'app-edit-question',
   templateUrl: './edit-question.component.html',
@@ -13,7 +14,7 @@ import { Question } from '../question.interface';
 
 })
 export class EditQuestionComponent implements OnInit {
-  displayedColumns: string[] = ['Difficulty', 'Question', 'Answer'];
+  displayedColumns: string[] = ['Difficulty', 'Question', 'Answer', 'Action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -67,6 +68,27 @@ export class EditQuestionComponent implements OnInit {
       return [...acc, ...questions];
     }, []);
     return flattened;
+  }
+
+  editData(row: any, id: number) {
+    this.dialog.open(DialogComponentComponent, {
+      width: '30%',
+      data: row
+    }).afterClosed().subscribe(val=> {
+      this.GetAllTriviaData(id);
+    })
+  }
+
+  deleteData(id: number) {
+
+  }
+
+  openDialog() {
+    this.dialog.open(DialogComponentComponent, {
+      width: '30%'
+    }).afterClosed().subscribe(val=> {
+      this.GetAllTriviaData(1);
+    })
   }
 }
 

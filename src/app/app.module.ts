@@ -21,12 +21,15 @@ import {
   MatCardSubtitle
 } from "@angular/material/card";
 import {MatFormField} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatPaginator} from "@angular/material/paginator";
+import { DialogComponentComponent } from './dialog-component/dialog-component.component';
+import {MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {MatOption, MatSelect} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import {MatPaginator} from "@angular/material/paginator";
     QuizComponentComponent,
     QuestionComponentComponent,
     HomeComponentComponent,
-    EditQuestionComponent
+    EditQuestionComponent,
+    DialogComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,13 @@ import {MatPaginator} from "@angular/material/paginator";
     MatInput,
     MatIconButton,
     MatToolbar,
-    MatPaginator
+    MatPaginator,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogClose,
+    ReactiveFormsModule,
+    MatSelect,
+    MatOption
   ],
   providers: [
     provideClientHydration(),
