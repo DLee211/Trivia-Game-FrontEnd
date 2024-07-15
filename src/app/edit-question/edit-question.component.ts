@@ -16,7 +16,7 @@ import {DialogComponentComponent} from "../dialog-component/dialog-component.com
 export class EditQuestionComponent implements OnInit {
   displayedColumns: string[] = ['Difficulty', 'Question', 'Answer', 'Action'];
   dataSource!: MatTableDataSource<any>;
-
+  gameId!: number;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -26,9 +26,9 @@ export class EditQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const id = +params['id'];
-      console.log('Game ID:', id)
-      this.GetAllTriviaData(id);
+      const gameId = +params['id'];
+      console.log('Game ID:', gameId)
+      this.GetAllTriviaData(gameId);
     });
   }
 
@@ -70,13 +70,15 @@ export class EditQuestionComponent implements OnInit {
     return flattened;
   }
 
-  editData(row: any, id: number) {
+  editData(row: any, gameId: number) {
     this.dialog.open(DialogComponentComponent, {
       width: '30%',
-      data: row
-    }).afterClosed().subscribe(val=> {
-      this.GetAllTriviaData(id);
-    })
+      data: {...row, gameId: gameId}
+    }).afterClosed().subscribe(val => {
+      if (gameId) {
+        this.GetAllTriviaData(gameId);
+      }
+    });
   }
 
   deleteData(id: number) {
@@ -85,10 +87,13 @@ export class EditQuestionComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(DialogComponentComponent, {
-      width: '30%'
-    }).afterClosed().subscribe(val=> {
-      this.GetAllTriviaData(1);
-    })
+      width: '30%',
+      data: {gameId: this.gameId}
+    }).afterClosed().subscribe(val => {
+      if (this.gameId) {
+        this.GetAllTriviaData(this.gameId);
+      }
+    });
   }
 }
 
