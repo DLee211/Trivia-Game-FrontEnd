@@ -35,6 +35,8 @@ export class DialogComponentComponent implements OnInit{
     }
   }
 
+  questions: any[] = [];
+
   addQuestionForm() {
     if (this.questionForm.valid) {
       const payload = {
@@ -49,7 +51,8 @@ export class DialogComponentComponent implements OnInit{
       this.api.postQuestion(payload).subscribe({
         next: (res) => {
           console.log('Question added successfully', res);
-          this.dialogRef.close(); // Close the dialog on success
+          this.dialogRef.close();
+          location.reload();
         },
         error: (err) => {
           console.error('Error adding question', err);
