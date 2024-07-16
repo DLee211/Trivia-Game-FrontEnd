@@ -7,6 +7,8 @@ import {ApiService} from "../services/api.service";
 import {ActivatedRoute} from "@angular/router";
 import { Question } from '../question.interface';
 import {DialogComponentComponent} from "../dialog-component/dialog-component.component";
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-edit-question',
   templateUrl: './edit-question.component.html',
@@ -21,7 +23,7 @@ export class EditQuestionComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private dialog: MatDialog, private api: ApiService, private route: ActivatedRoute) {
+  constructor(private dialog: MatDialog, private api: ApiService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -86,9 +88,10 @@ export class EditQuestionComponent implements OnInit {
   }
 
   openDialog() {
+    const currentUrl = this.router.url; // Assuming `router` is already injected in the constructor
     this.dialog.open(DialogComponentComponent, {
       width: '30%',
-      data: {gameId: this.gameId}
+      data: {gameId: this.gameId, currentUrl: currentUrl}
     }).afterClosed().subscribe(val => {
       if (this.gameId) {
         this.GetAllTriviaData(this.gameId);
