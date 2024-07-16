@@ -39,14 +39,12 @@ export class DialogComponentComponent implements OnInit{
     if (this.questionForm.valid) {
       const payload = {
         gameId: this.gameId,
-        difficulty: this.questionForm.value.difficulty,
-        questions: [
-          {
-            problem: this.questionForm.value.problem,
-            answer: this.questionForm.value.answer
-          }
-        ]
+        difficulty: String(this.questionForm.value.difficulty),
+        problem: String(this.questionForm.value.problem),
+        answer: String(this.questionForm.value.answer)
       };
+
+      console.log('Payload:', payload);
 
       this.api.postQuestion(payload).subscribe({
         next: (res) => {
