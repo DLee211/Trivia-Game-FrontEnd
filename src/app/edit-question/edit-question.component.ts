@@ -84,7 +84,16 @@ export class EditQuestionComponent implements OnInit {
   }
 
   deleteData(id: number) {
+    this.api.deleteQuestion(id).subscribe({
+      next: (res) => {
+        console.log('Question deleted successfully', res);
+        location.reload();
+      },
+      error: (err) => {
+        console.error('Error deleting question', err);
 
+      }
+    });
   }
 
   openDialog() {

@@ -27,6 +27,13 @@ export class DialogComponentComponent implements OnInit{
       answer: new FormControl('', Validators.required)
     });
 
+    if(this.data && this.data.questionId){
+      this.actionBtn = "Update";
+      this.questionForm.controls['difficulty'].setValue(this.data.difficulty);
+      this.questionForm.controls['problem'].setValue(this.data.problem);
+      this.questionForm.controls['answer'].setValue(this.data.answer);
+    }
+
     if(this.data){
       this.gameId = this.data.gameId;
       const urlSegments = this.data.currentUrl.split('/');
@@ -38,6 +45,34 @@ export class DialogComponentComponent implements OnInit{
   questions: any[] = [];
 
   addQuestionForm() {
+    if (!this.data.questionId) {
+      if (this.questionForm.valid) {
+        const payload = {
+          gameId: this.gameId,
+          difficulty: String(this.questionForm.value.difficulty),
+          problem: String(this.questionForm.value.problem),
+          answer: String(this.questionForm.value.answer)
+        };
+
+        console.log('Payload:', payload);
+
+        this.api.postQuestion(payload).subscribe({
+          next: (res) => {
+            console.log('Question added successfully', res);
+            this.dialogRef.close();
+            location.reload();
+          },
+          error: (err) => {
+            console.error('Error adding question', err);
+          }
+        });
+      }
+    }
+    else{
+      this.updateQuestionForm();
+    }
+  }
+  updateQuestionForm() {
     if (this.questionForm.valid) {
       const payload = {
         gameId: this.gameId,
@@ -48,17 +83,16 @@ export class DialogComponentComponent implements OnInit{
 
       console.log('Payload:', payload);
 
-      this.api.postQuestion(payload).subscribe({
+      this.api.updateQuestion(payload, this.data.questionId).subscribe({
         next: (res) => {
-          console.log('Question added successfully', res);
+          console.log('Question updated successfully', res);
           this.dialogRef.close();
           location.reload();
         },
         error: (err) => {
-          console.error('Error adding question', err);
+          console.error('Error updating question', err);
         }
       });
     }
-
   }
 }
