@@ -13,11 +13,17 @@ td {
   text-align: center;
 }
 
-button {
-  font-size: 2em; /* adjust this value to make the text inside the button larger */
+difficultyButton {
+  font-size: 2em;
   padding: 20px 40px;
 }
 
 answer {
   font-size: 2em; /* adjust this value to make the text inside the answer larger */
 }
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+

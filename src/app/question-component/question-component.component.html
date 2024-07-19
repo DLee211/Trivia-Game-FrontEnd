@@ -1,8 +1,9 @@
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-flat-button routerLink="/game">Back</button>
+</mat-toolbar>
+
 <div class="container">
   <mat-card class="question-card" appearance="outlined">
-    <div class="back-to-game">
-      <button mat-stroked-button routerLink ="/game">Quit</button>
-    </div>
     <div class="strikes">
         <span class="strike" *ngFor="let strike of [].constructor(wrongAnswerCount); let i = index">
           X

@@ -1,9 +1,13 @@
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-flat-button routerLink="/game">Back</button>
+</mat-toolbar>
+
 <div class="container">
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="button">
       <th mat-header-cell *matHeaderCellDef> Difficulty </th>
       <td mat-cell *matCellDef="let row">
-        <button mat-stroked-button [routerLink]="['/question', row.quizId]">{{row.difficulty}}</button>
+        <button class ="difficultyButton" mat-stroked-button [routerLink]="['/question', row.quizId]">{{row.difficulty}}</button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
