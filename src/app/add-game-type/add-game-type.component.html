@@ -1,0 +1,10 @@
+<div class="add-game-type-container">
+  <h2>Add New Game Type</h2>
+  <form [formGroup]="gameTypeForm" (submit)="addGameType()">
+    <mat-form-field appearance="fill">
+      <mat-label>Game Type Name</mat-label>
+      <input formControlName="gameType" matInput placeholder="GameType">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Add Game Type</button>
+  </form>
+</div>

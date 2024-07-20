@@ -30,6 +30,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import { DialogComponentComponent } from './dialog-component/dialog-component.component';
 import {MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatOption, MatSelect} from "@angular/material/select";
+import { AddGameTypeComponent } from './add-game-type/add-game-type.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MatOption, MatSelect} from "@angular/material/select";
     QuestionComponentComponent,
     HomeComponentComponent,
     EditQuestionComponent,
-    DialogComponentComponent
+    DialogComponentComponent,
+    AddGameTypeComponent
   ],
   imports: [
     BrowserModule,
