@@ -61,10 +61,9 @@ export class GameComponentComponent implements OnInit{
     })
   }
 
-  deleteGames(id: number){
+  deleteGame(id: number){
     this.api.deleteGame(id).subscribe({
       next: (res)=>{
-        alert("Data deleted successfully");
         this.GetAllGames();
       },
       error: (err)=>{

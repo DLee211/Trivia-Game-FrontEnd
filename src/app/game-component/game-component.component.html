@@ -2,6 +2,11 @@
   <div *ngFor="let row of dataSource.data">
     <mat-card class="game-card">
       <mat-card-header>
+        <div class="delete-button">
+          <button mat-icon-button (click)="deleteGame(row.gameId)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
         <mat-card-title>{{row.gameType}}</mat-card-title>
         <mat-card-subtitle>HI SCORE: {{row.score}}</mat-card-subtitle>
       </mat-card-header>
