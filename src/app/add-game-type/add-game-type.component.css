@@ -19,11 +19,11 @@
 }
 
 .add-game-type-container form button[type="submit"] {
-  align-self: center; /* Center the button within the form */
-  margin-top: 20px; /* Optional: Add some space above the button */
+  align-self: center;
+  margin-top: 20px;
 }
 
 mat-form-field {
-  width: 100%; /* Ensure form fields take full width */
-  max-width: 300px; /* Optional: limit max width for better aesthetics */
+  width: 100%;
+  max-width: 300px;
 }
