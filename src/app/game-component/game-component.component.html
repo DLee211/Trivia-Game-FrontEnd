@@ -2,6 +2,11 @@
   <div *ngFor="let row of dataSource.data">
     <mat-card class="game-card">
       <mat-card-header>
+        <div class="edit-button">
+          <button mat-icon-button (click)="openEditDialog(row.gameId, row.gameType)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
         <div class="delete-button">
           <button mat-icon-button (click)="deleteGame(row.gameId)">
             <mat-icon>delete</mat-icon>

@@ -4,6 +4,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ActivatedRoute} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {EditGameDialogComponent} from "../edit-game-dialog/edit-game-dialog.component";
 
 @Component({
   selector: 'app-game-component',
@@ -20,7 +22,7 @@ export class GameComponentComponent implements OnInit{
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private api : ApiService, private route: ActivatedRoute)
+  constructor(private api : ApiService, private route: ActivatedRoute, private dialog: MatDialog)
   {
   }
   ngOnInit(){
@@ -32,6 +34,19 @@ export class GameComponentComponent implements OnInit{
       });
     });
     this.GetAllGames();
+  }
+
+
+  openEditDialog(gameId: number, gameName: string) {
+    const dialogRef = this.dialog.open(EditGameDialogComponent, {
+      width: '250px',
+      data: { gameId: gameId, gameName: gameName }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.GetAllGames(); // Refresh the list of games
+    });
   }
 
   GetAllGames()

@@ -31,6 +31,7 @@ import { DialogComponentComponent } from './dialog-component/dialog-component.co
 import {MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatOption, MatSelect} from "@angular/material/select";
 import { AddGameTypeComponent } from './add-game-type/add-game-type.component';
+import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AddGameTypeComponent } from './add-game-type/add-game-type.component';
     HomeComponentComponent,
     EditQuestionComponent,
     DialogComponentComponent,
-    AddGameTypeComponent
+    AddGameTypeComponent,
+    EditGameDialogComponent
   ],
   imports: [
     BrowserModule,
