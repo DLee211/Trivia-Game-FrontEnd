@@ -9,8 +9,9 @@ import {ApiService} from "../services/api.service";
 })
 export class EditGameDialogComponent {
   editGameForm = new FormGroup({
-    gameType: new FormControl(this.data.gameType)
+    gameType: new FormControl( { value: '', disabled: false }),
   });
+
   constructor(
     private api: ApiService,
     public dialogRef: MatDialogRef<EditGameDialogComponent>,
@@ -22,22 +23,25 @@ export class EditGameDialogComponent {
   }
 
   submitForm() {
-    const body = JSON.stringify({
-      gameId: this.data.gameId,
-      gameType: this.data.gameType,
-      score: this.data.score
-    });
-
-    this.api.updateGame(body, this.data.gameId).subscribe({
-      next: (res) => {
-        console.log('Response:', res);
-      },
-      error: (err) => {
-        console.log('Error:', err);
-        console.log('Body:', body);
-        console.log('Game ID:', this.data.gameId);
-      }
-    });
-    this.dialogRef.close();
+    if (this.data.gameId) {
+      this.api.getGameById(this.data.gameId).subscribe({
+        next: (gameDetails) => {
+          gameDetails.gameType = this.editGameForm.value.gameType;
+          this.api.updateGame(gameDetails, this.data.gameId).subscribe({
+            next: (res) =>
+              console.log('Response:', res),
+            error: (err) => {
+              console.log('Error:', err);
+              console.log('Body:', gameDetails);
+              console.log('Game ID:', this.data.gameId);
+            }
+          });
+          location.reload()
+        },
+        error: (err) => console.error('Failed to fetch game details', err)
+      });
+    } else {
+      console.error('Game ID is missing');
+    }
   }
 }

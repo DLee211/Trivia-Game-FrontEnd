@@ -28,7 +28,7 @@ import { EditQuestionComponent } from './edit-question/edit-question.component';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatPaginator} from "@angular/material/paginator";
 import { DialogComponentComponent } from './dialog-component/dialog-component.component';
-import {MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatOption, MatSelect} from "@angular/material/select";
 import { AddGameTypeComponent } from './add-game-type/add-game-type.component';
 import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.component';
@@ -45,36 +45,37 @@ import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.com
     AddGameTypeComponent,
     EditGameDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatButton,
-    MatColumnDef,
-    MatHeaderCell,
-    MatCell,
-    HttpClientModule,
-    MatTableModule,
-    MatCard,
-    MatCardSubtitle,
-    MatCardHeader,
-    MatCardContent,
-    MatCardActions,
-    MatCardModule,
-    MatFormField,
-    FormsModule,
-    MatIcon,
-    MatFormFieldModule,
-    MatInput,
-    MatIconButton,
-    MatToolbar,
-    MatPaginator,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogClose,
-    ReactiveFormsModule,
-    MatSelect,
-    MatOption
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatButton,
+        MatColumnDef,
+        MatHeaderCell,
+        MatCell,
+        HttpClientModule,
+        MatTableModule,
+        MatCard,
+        MatCardSubtitle,
+        MatCardHeader,
+        MatCardContent,
+        MatCardActions,
+        MatCardModule,
+        MatFormField,
+        FormsModule,
+        MatIcon,
+        MatFormFieldModule,
+        MatInput,
+        MatIconButton,
+        MatToolbar,
+        MatPaginator,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogClose,
+        ReactiveFormsModule,
+        MatSelect,
+        MatOption,
+        MatDialogActions
+    ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync()
