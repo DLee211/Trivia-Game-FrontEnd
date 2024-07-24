@@ -107,5 +107,25 @@ export class EditQuestionComponent implements OnInit {
       }
     });
   }
+
+  resetScore() {
+    this.api.getGameById(this.dataSource.data[0].gameId).subscribe({
+      next: (gameDetails) => {
+        gameDetails.score = 0;
+        this.api.updateGame(gameDetails, this.dataSource.data[0].gameId).subscribe({
+          next: (res) => {
+            console.log('Response:', res);
+            location.reload();
+          },
+          error: (err) => {
+            console.error('Failed to update game score', err);
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Failed to fetch game details', err);
+      }
+    });
+  }
 }
 
