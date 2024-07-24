@@ -90,7 +90,7 @@ export class GameComponentComponent implements OnInit{
 
   openDialog() {
     const dialogRef = this.dialog.open(AddGameTypeDialogComponent, {
-      width: '80%',
+      width: 'auto',
       height: 'auto'
     });
 
