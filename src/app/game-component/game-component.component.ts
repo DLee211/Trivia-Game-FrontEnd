@@ -6,6 +6,7 @@ import {MatSort} from "@angular/material/sort";
 import {ActivatedRoute} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {EditGameDialogComponent} from "../edit-game-dialog/edit-game-dialog.component";
+import {AddGameTypeDialogComponent} from "../add-game-type-dialog/add-game-type-dialog.component";
 
 @Component({
   selector: 'app-game-component',
@@ -87,4 +88,15 @@ export class GameComponentComponent implements OnInit{
     })
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(AddGameTypeDialogComponent, {
+      width: '80%',
+      height: 'auto'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.GetAllGames(); // Refresh the list of games
+    });
+  }
 }
