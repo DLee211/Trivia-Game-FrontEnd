@@ -30,7 +30,6 @@ import {MatPaginator} from "@angular/material/paginator";
 import { DialogComponentComponent } from './dialog-component/dialog-component.component';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatOption, MatSelect} from "@angular/material/select";
-import { AddGameTypeComponent } from './add-game-type/add-game-type.component';
 import { EditGameDialogComponent } from './edit-game-dialog/edit-game-dialog.component';
 import { AddGameTypeDialogComponent } from './add-game-type-dialog/add-game-type-dialog.component';
 
@@ -43,7 +42,6 @@ import { AddGameTypeDialogComponent } from './add-game-type-dialog/add-game-type
     HomeComponentComponent,
     EditQuestionComponent,
     DialogComponentComponent,
-    AddGameTypeComponent,
     EditGameDialogComponent,
     AddGameTypeDialogComponent
   ],
