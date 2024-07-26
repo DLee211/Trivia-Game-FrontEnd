@@ -46,7 +46,8 @@ export class GameComponentComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.GetAllGames(); // Refresh the list of games
+      this.GetAllGames();
+      location.reload();
     });
   }
 
@@ -70,22 +71,24 @@ export class GameComponentComponent implements OnInit{
       next: (res)=>{
         alert("Data edited successfully");
         this.GetAllGames();
-      },
+        },
       error: (err)=>{
         console.log(err);
       }
     })
   }
 
-  deleteGame(id: number){
-    this.api.deleteGame(id).subscribe({
-      next: (res)=>{
-        this.GetAllGames();
-      },
-      error: (err)=>{
-        console.log(err);
-      }
-    })
+  deleteGame(id: number) {
+    if (window.confirm('Are you sure you want to delete this game?')) {
+      this.api.deleteGame(id).subscribe({
+        next: (res) => {
+          this.GetAllGames();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
   }
 
   openDialog() {
