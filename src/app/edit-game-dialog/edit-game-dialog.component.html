@@ -4,10 +4,14 @@
     <mat-form-field>
       <mat-label>Game Name</mat-label>
       <input matInput formControlName="gameType">
+      <mat-error *ngIf="editGameForm.get('gameType')?.hasError('maxlength')">
+        Game Name cannot be more than 30 characters long
+      </mat-error>
+      <mat-error *ngIf="editGameForm.get('gameType')?.hasError('required')">
+        Game Name is required
+      </mat-error>
     </mat-form-field>
+    <button mat-button (click)="submitForm()">Submit</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
   </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="submitForm()" cdkFocusInitial>Save</button>
 </div>
