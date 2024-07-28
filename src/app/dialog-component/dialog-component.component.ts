@@ -23,8 +23,8 @@ export class DialogComponentComponent implements OnInit{
   ngOnInit(): void {
     this.questionForm = new FormGroup({
       difficulty: new FormControl('', Validators.required),
-      problem: new FormControl('', Validators.required),
-      answer: new FormControl('', Validators.required)
+      problem: new FormControl('', [Validators.required, Validators.maxLength(200)]),
+      answer: new FormControl('', [Validators.required, Validators.maxLength(200)])
     });
 
     if(this.data && this.data.questionId){

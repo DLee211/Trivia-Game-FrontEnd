@@ -8,14 +8,30 @@
         <mat-option value="Easy">Easy</mat-option>
         <mat-option value="Medium">Medium</mat-option>
         <mat-option value="Hard">Hard</mat-option>
-      </mat-select></mat-form-field>
+      </mat-select>
+      <mat-error *ngIf="questionForm.get('difficulty')?.hasError('required')">
+        Difficulty is required
+      </mat-error>
+    </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Question</mat-label>
       <input formControlName="problem" matInput placeholder="Question">
+      <mat-error *ngIf="questionForm.get('problem')?.hasError('required')">
+        Problem is required
+      </mat-error>
+      <mat-error *ngIf="questionForm.get('problem')?.hasError('maxlength')">
+        Problem cannot be more than 200 characters long
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Answer</mat-label>
       <input formControlName="answer" matInput placeholder="Answer">
+      <mat-error *ngIf="questionForm.get('answer')?.hasError('required')">
+        Answer is required
+      </mat-error>
+      <mat-error *ngIf="questionForm.get('answer')?.hasError('maxlength')">
+        Answer cannot be more than 200 characters long
+      </mat-error>
     </mat-form-field>
     <br>
   <button mat-raised-button color ="warn" mat-dialog-close>Close</button>
