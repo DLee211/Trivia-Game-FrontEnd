@@ -20,7 +20,7 @@
         Problem is required
       </mat-error>
       <mat-error *ngIf="questionForm.get('problem')?.hasError('maxlength')">
-        Problem cannot be more than 200 characters long
+        Problem is too long
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -30,7 +30,7 @@
         Answer is required
       </mat-error>
       <mat-error *ngIf="questionForm.get('answer')?.hasError('maxlength')">
-        Answer cannot be more than 200 characters long
+        Answer is too long
       </mat-error>
     </mat-form-field>
     <br>
