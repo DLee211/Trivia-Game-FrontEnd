@@ -1,6 +1,6 @@
 # Trivia Game Management System
 
-This project is a web-based application built using Angular, TypeScript, and Angular Material. It allows users to manage trivia game data, including adding, editing, and validating game types and trivia questions. The application interacts with a backend API(Trivia-Game-BackEnd) to fetch and update game details.  
+This project is a web-based application built using Angular, TypeScript, and Angular Material. It allows users to manage trivia game data, including adding, editing, and validating game types and trivia questions. The application interacts with a [backend API](https://github.com/DLee211/Trivia_Game_BackEnd) to fetch and update game details.  
 
 ## Features
 
