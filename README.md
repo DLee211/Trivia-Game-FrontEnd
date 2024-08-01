@@ -1,27 +1,23 @@
-# QuizGameFrontEnd
+# Trivia Game Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+This project is a web-based application built using Angular, TypeScript, and Angular Material. It allows users to manage trivia game data, including adding, editing, and validating game types and trivia questions. The application interacts with a backend API(Trivia-Game-BackEnd) to fetch and update game details.  
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Add Game Type: Users can add new game types with validation to ensure the game type name is required and does not exceed 30 characters.
+2. Edit Game Type: Users can edit existing game types with similar validation rules.
+3. Add Trivia Question: Users can add trivia questions with fields for difficulty, question, and answer, each with appropriate validation.
+4. Form Validation: Ensures that all required fields are filled and adhere to specified constraints before submission.
+5. Responsive Dialogs: Dialog boxes are styled to accommodate longer text and provide a better user experience.
+## Technologies Used
 
-## Code scaffolding
+1. Angular: Framework for building the front-end application.
+2. TypeScript: Superset of JavaScript used for type safety and better code management.
+3. Angular Material: UI component library for implementing Material Design in Angular applications.
+4. RxJS: Library for reactive programming using Observables, used for handling asynchronous operations.
+5. CSS: Styling the application and customizing Angular Material components.
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Clone the repository:  <pre>git clone https://github.com/your-username/trivia-game-management.git cd trivia-game-management </pre>
+2. Install dependencies:  <pre>npm install </pre>
+3. Run the application:  <pre>ng serve </pre>
