@@ -18,6 +18,6 @@ This project is a web-based application built using Angular, TypeScript, and Ang
 5. CSS: Styling the application and customizing Angular Material components.
 ## Installation
 
-1. Clone the repository:  <pre>git clone https://github.com/DLee211/trivia-game-management.git cd trivia-game-management </pre>
+1. Clone the repository:  <pre>https://github.com/DLee211/Trivia-Game-FrontEnd.git cd trivia-game-management </pre>
 2. Install dependencies:  <pre>npm install </pre>
 3. Run the application:  <pre>ng serve </pre>
