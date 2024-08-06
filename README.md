@@ -9,6 +9,7 @@ This project is a web-based application that is a fully functional Trivia Game b
 3. Add Trivia Question: Users can add trivia questions with fields for difficulty, question, and answer, each with appropriate validation.
 4. Form Validation: Ensures that all required fields are filled and adhere to specified constraints before submission.
 5. Responsive Dialogs: Dialog boxes are styled to accommodate longer text and provide a better user experience.
+6. Minor Mispelling Input: When answering questions, the quiz allows for minor misspellings in your input.
 ## Technologies Used
 
 1. Angular: Framework for building the front-end application.
